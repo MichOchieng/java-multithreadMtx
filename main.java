@@ -9,18 +9,22 @@ public class main{
     private static int[][] resultMtx   = new int[x][x];
 
     public static void main(String[] args) {        
-        threads t = new threads(0,0,2,y);    
-        threads t2 = new threads(2,y,x,y);          
+        threads t = new threads(x,y);    
+        threads t2 = new threads(x,y);    
+        threads t3 = new threads(x,y);        
         fillMtx();      
         t.start();
         t2.start(); 
+        t3.start(); 
         t.test(mtx,mtx1,resultMtx); 
         t2.test(mtx,mtx1,resultMtx);
+        t3.test(mtx,mtx1,resultMtx);
         view();
         view2();
         view3();    
     }    
 
+    // Creates test matricies mtx and mtx1
     private static void fillMtx(){
         Random r = new Random();        
         for(int i = 0;i<y;i++){
@@ -37,6 +41,8 @@ public class main{
             }
         }
     }    
+
+    // For viewing matrix after initialization / multiplication
 
     private static void view(){
         int n = mtx.length;
